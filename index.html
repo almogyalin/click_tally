@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Click Tally — Syringe Dial Click Counter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Click Tally</h1>
+            <p class="subtitle">Count syringe dial clicks from audio recordings</p>
+        </header>
+
+        <section class="controls">
+            <div class="control-group">
+                <label for="file-input" class="btn btn-primary">
+                    📁 Upload Recording
+                </label>
+                <input type="file" id="file-input" accept="audio/*" hidden>
+            </div>
+
+            <div class="control-group">
+                <button id="record-btn" class="btn btn-record">
+                    🎙️ Record
+                </button>
+            </div>
+
+            <div class="control-group">
+                <span class="separator">|</span>
+                <label for="sensitivity" class="param-label">Sensitivity</label>
+                <input type="range" id="sensitivity" min="0.3" max="2.0" step="0.1" value="0.9">
+                <span id="sensitivity-value">0.9</span>
+            </div>
+        </section>
+
+        <section id="status" class="status" hidden>
+            <span id="status-text">Processing...</span>
+        </section>
+
+        <section id="results" class="results" hidden>
+            <div class="result-summary">
+                <span class="click-count" id="click-count">0</span>
+                <span class="click-label">clicks detected</span>
+            </div>
+        </section>
+
+        <section id="chart-container" class="chart-container" hidden>
+            <canvas id="waveform-canvas"></canvas>
+            <canvas id="cumulative-canvas"></canvas>
+        </section>
+
+        <footer>
+            <p>Upload a recording of your syringe dial clicks, or record directly. The app will detect individual clicks and show their distribution over time.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
